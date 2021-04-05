@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vaccine Locator</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -37,16 +37,7 @@
                 <a class="waves-effect waves-light btn" id="searchBtn"><i class="material-icons right">place</i>Find Now!</a>
             </div>
             <!-- map on page -->
-            <div id='map' style='width: 400px; height: 300px;'></div>
-                <script>
-                mapboxgl.accessToken = 'pk.eyJ1Ijoiam95ZnVsbHl4IiwiYSI6ImNrbjI0cmdwbDE0MDkyb256cGQ1OWNnZXYifQ.queDmS3fimqBl6lwc3tMXw';
-                var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-74.5, 40], // starting position [lng, lat]
-                zoom: 9 // starting zoom
-                });
-                </script>
+            <div id="map"></div>
         </section>
     </main>
 

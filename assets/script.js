@@ -34,3 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems, options);
     
   });
+  //map begins here 
+mapboxgl.accessToken = 'pk.eyJ1IjoianZwcm9maXRzMjgiLCJhIjoiY2tuMjRzdmg4MTQ5cTJubW94bW41MzlnNyJ9.jM6FpByBc8lm0jphn2EQKw';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/jvprofits28/ckn2i7hxj2pcg17o5q8gi6ep4', // style URL
+    center: [-95.829, 37.627], // starting position [lng, lat]
+    zoom: 2.5 // starting zoom
+});
