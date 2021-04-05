@@ -30,7 +30,7 @@ var searchInput = document.querySelector('#user-input')
 
 // var searchLocation = 'WA';
 function fetchLocation(location) {
-    var locatorApi = `https://vaccinespotter.org/api/v0/states/${searchInput}.json`;
+    var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${searchInput.value}.json`;
     fetch(locatorApi).then(function(data){
         return data.json()
     }).then(function(data){
@@ -39,12 +39,13 @@ function fetchLocation(location) {
 }
 
 
-document.addEventListener('click', function(event) {
+searchButton.addEventListener('click', function(event) {    event.preventDefault();
+    console.log('clickkkkked');
+
     var location = searchInput.value;
     console.log(location)
 
-    event.preventDefault();
-    console.log('clickkkkked');
+    
 
     fetchLocation(location);
 })
@@ -54,9 +55,3 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems, options);
     
   });
-
-  $( document ).ready(function(){
-    $(".dropdown-trigger").dropdown();
-    $('.carousel').carousel();
-  });
-  
