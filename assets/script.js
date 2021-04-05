@@ -34,3 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems, options);
     
   });
+
+  $( document ).ready(function(){
+    $(".dropdown-trigger").dropdown();
+    $('.carousel').carousel();
+  });
+  

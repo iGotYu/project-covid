@@ -1,103 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="./assets/style.css">
-</head>
-<body>
-    <header class="nav-bar"></header>
-    <h1>Vaccine Locator</h1>
-    <main class="container">
-              
-        <section>
-            <header class=“nav-bar”>
-                <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">three</a></li>
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header class="“nav-bar”">
+      <!-- Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li>
+            <a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/keythingstoknow.html?s_cid=10490:cdc%20covid%20vaccine:sem.ga:p:RG:GM:gen:PTN:FY21"
+            target="_blank"
+            >Centers for Disease Control and Prevention</a>
+        </li>
+        <li>
+            <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines"
+            target="_blank"
+            >World Health Organization</a>
+        </li>
+        <li>
+            <a href="https://www.hhs.gov/coronavirus/covid-19-vaccines/index.html"
+                  target="_blank"
+                  >U.S. Department of Health & Human Services</a>
+        </li>
+        <li><a href="#!"
+            >One more link or nah</a>
+        </li>
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Vaccine Locator</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <!-- Dropdown Trigger -->
+            <li>
+              <a class="dropdown-trigger" href="#!" data-target="dropdown1"
+                >Dropdown<i class="material-icons right">arrow_drop_down</i></a
+              >
+            </li>
           </ul>
-          <nav>
-            <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Logo</a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-              </ul>
-            </div>
-          </nav>
-            <div class="row">
-                <div class="input-field col s6">
-                  <input placeholder="Ex: 12345" id="first_name2" type="text" class="validate">
-                  <label class="active" for="first_name2">Enter 5-digit Zip Code</label>
-                </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <main class="container">
+        <section>
+            <div class="carousel">
+                <a class="carousel-item" href="#one!"><img src="./images/637472554738570000.jpeg"></a>
+                <a class="carousel-item" href="#two!"><img src="./images/download.jpeg"></a>
+                <a class="carousel-item" href="#three!"><img src="./images/vaccine_hope.png"></a>
+                <a class="carousel-item" href="#four!"><img src="./images/vax-distro_52015469 (3).png"></a>
               </div>
-            <div class="row">  
-                <label>Location Within:</label>
-                <select class="browser-default">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1" id="option1">10 miles</option>
-                <option value="2" id="option2">20 miles</option>
-                <option value="3" id="option3">30 miles</option>
-                </select>
-            </div>
-            <div>
-                <a class="waves-effect waves-light btn" id="searchBtn"><i class="material-icons right">place</i>Find Now!</a>
-            </div>
-            <!-- map on page -->
-            <div id='map' style='width: 400px; height: 300px;'></div>
-                <script>
-                mapboxgl.accessToken = 'pk.eyJ1Ijoiam95ZnVsbHl4IiwiYSI6ImNrbjI0cmdwbDE0MDkyb256cGQ1OWNnZXYifQ.queDmS3fimqBl6lwc3tMXw';
-                var map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-74.5, 40], // starting position [lng, lat]
-                zoom: 9 // starting zoom
-                });
-                </script>
         </section>
+      <section>
+        <div class="row">
+          <div class="input-field col s6">
+            <input
+              placeholder="Ex: 12345"
+              id="first_name2"
+              type="text"
+              class="validate"
+            />
+            <label class="active" for="first_name2"
+              >Enter 5-digit Zip Code</label
+            >
+          </div>
+        </div>
+        <div class="row">
+          <label>Location Within:</label>
+          <select class="browser-default">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1" id="option1">10 miles</option>
+            <option value="2" id="option2">20 miles</option>
+            <option value="3" id="option3">30 miles</option>
+          </select>
+        </div>
+        <div>
+          <a class="waves-effect waves-light btn" id="searchBtn"
+            ><i class="material-icons right">place</i>Find Now!</a
+          >
+        </div>
+        <!-- map on page -->
+        <div id="map" style="width: 400px; height: 300px"></div>
+        <script>
+          mapboxgl.accessToken =
+            "pk.eyJ1Ijoiam95ZnVsbHl4IiwiYSI6ImNrbjI0cmdwbDE0MDkyb256cGQ1OWNnZXYifQ.queDmS3fimqBl6lwc3tMXw";
+          var map = new mapboxgl.Map({
+            container: "map", // container ID
+            style: "mapbox://styles/mapbox/streets-v11", // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9, // starting zoom
+          });
+        </script>
+      </section>
     </main>
     <footer class="page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <!-- <h5 class="white-text">Footer Content</h5>
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <!-- <h5 class="white-text">Footer Content</h5>
               <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
-              <a class="twitter-timeline" data-width="400" data-height="400" href="https://twitter.com/TwitterDev/lists/national-parks?ref_src=twsrc%5Etfw">A Twitter List by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Covid-19 Resources</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines" target="_blank">World Health Organization</a></li>
-                <li><a class="grey-text text-lighten-3" href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/keythingstoknow.html?s_cid=10490:cdc%20covid%20vaccine:sem.ga:p:RG:GM:gen:PTN:FY21" target="_blank">Centers for Disease Control and Prevention</a></li>
-                <li><a class="grey-text text-lighten-3" href="https://www.hhs.gov/coronavirus/covid-19-vaccines/index.html" target="_blank">U.S. Department of Health & Human Services</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">One more link or nah</a></li>
-              </ul>
-            </div>
+            <a
+              class="twitter-timeline"
+              data-width="400"
+              data-height="400"
+              href="https://twitter.com/TwitterDev/lists/national-parks?ref_src=twsrc%5Etfw"
+              >A Twitter List by TwitterDev</a
+            >
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Covid-19 Resources</h5>
+            <ul>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines"
+                  target="_blank"
+                  >World Health Organization</a>
+              </li>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/keythingstoknow.html?s_cid=10490:cdc%20covid%20vaccine:sem.ga:p:RG:GM:gen:PTN:FY21"
+                  target="_blank"
+                  >Centers for Disease Control and Prevention</a>
+              </li>
+              <li>
+                <a
+                  class="grey-text text-lighten-3"
+                  href="https://www.hhs.gov/coronavirus/covid-19-vaccines/index.html"
+                  target="_blank"
+                  >U.S. Department of Health & Human Services</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="#!"
+                  >One more link or nah</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="footer-copyright">
-          <div class="container">
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
           © 2014 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="https://www.mapbox.com/about/maps" target="_blank">Map Provided by Mapbox</a>
-          </div>
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://www.mapbox.com/about/maps"
+            target="_blank"
+            >Map Provided by Mapbox</a
+          >
         </div>
-      </footer>
-    
+      </div>
+    </footer>
+
     <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/script.js"></script>
-</body>
+  </body>
 </html>
-
