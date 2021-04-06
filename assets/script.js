@@ -23,7 +23,6 @@ var zipInput = document.querySelector('#user-input');
 var zipCodeArr = new Array;
 var resultsDiv = document.querySelector('#results-div');
 
-// var searchLocation = 'WA';
 function fetchLocation(location) {
     console.log(location);
     var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
