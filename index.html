@@ -7,9 +7,9 @@
     <title>Document</title>
     <!-- Compiled and minified CSS -->
     <link
-    rel="stylesheet"
-    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-  />
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -30,23 +30,27 @@
       <!-- Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
         <li>
-            <a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/keythingstoknow.html?s_cid=10490:cdc%20covid%20vaccine:sem.ga:p:RG:GM:gen:PTN:FY21"
+          <a
+            href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Moderna.html"
             target="_blank"
-            >Centers for Disease Control and Prevention</a>
+            >Moderna Information (CDC)
+          </a>
         </li>
         <li>
-            <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines"
+          <a
+            href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/Pfizer-BioNTech.html"
             target="_blank"
-            >World Health Organization</a>
+            >Pfizer Information (CDC)
+          </a>
         </li>
         <li>
-            <a href="https://www.hhs.gov/coronavirus/covid-19-vaccines/index.html"
-                  target="_blank"
-                  >U.S. Department of Health & Human Services</a>
+          <a
+            href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/different-vaccines/janssen.html"
+            target="_blank"
+            >Johnson & Johnson's Information (CDC)</a
+          >
         </li>
-        <li><a href="#!"
-            >One more link or nah</a>
-        </li>
+        <li><a href="#!">One more link or nah</a></li>
       </ul>
       <nav>
         <div class="nav-wrapper">
@@ -65,20 +69,33 @@
       </nav>
     </header>
 
-
     <main class="container">
-        <section>
-            <div class="carousel">
-                <a class="carousel-item" href="#one!"><img src="./images/637472554738570000.jpeg"></a>
-                <a class="carousel-item" href="#two!"><img src="./images/download.jpeg"></a>
-                <a class="carousel-item" href="#three!"><img src="./images/vaccine_hope.png"></a>
-                <a class="carousel-item" href="#four!"><img src="./images/vax-distro_52015469 (3).png"></a>
-              </div>
-        </section>
+      <section>
+        <div class="carousel">
+          <a class="carousel-item" href="#one!"
+            ><img
+              src="./images/Moderna.jpg"
+              alt="Moderna Information"
+            />
+          </a>
+          <a class="carousel-item" href="#two!"
+            ><img src="./images/Pfizer-BioNTech.jpg" 
+            alt="Pfizer Information"
+          />
+        </a>
+          <a class="carousel-item" href="#three!"
+            ><img
+              src="./images/J&J.jpg"
+              alt="Johnson & Jonson's Information"
+          /></a>
+          <a class="carousel-item" href="#four!"
+            ><img src="./images/vaccine process.jpeg"
+          /></a>
+        </div>
+      </section>
       <section>
         <div class="row">
           <div class="input-field col s6">
-            <div class="btn" id="state-search-btn"><span>Submit</span></div>
             <input
               placeholder="Ex: WA, OR, VA"
               id="state"
@@ -86,15 +103,17 @@
               class="validate"
             />
             <label class="active" for="first_name2"
-              >Enter 2 Letter State Abbreviation</label
-            >
+              >Enter 2 Letter State Abbreviation</label>
+          </div>
+          <div class="btn" id="state-search-btn"><span>Submit</span>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <select
+            <!-- <select
               id="user-input">
-            </select>
+            </select> -->
+            <input placeholder="Ex: 12345" id="user-input" type="text" class="validate"/>
             <label class="active" for="first_name2"
               >Enter 5-digit Zip Code</label
             >
@@ -116,7 +135,7 @@
         </div>
         <!-- map on page -->
         <div id="map"></div>
-       
+        
       </section>
     </main>
     <footer class="page-footer">
@@ -125,18 +144,18 @@
           <div class="col l6 s12">
             <!-- <h5 class="white-text">Footer Content</h5>
               <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
-            <a
+            <!-- <a
               class="twitter-timeline"
               data-width="400"
               data-height="400"
               href="https://twitter.com/TwitterDev/lists/national-parks?ref_src=twsrc%5Etfw"
               >A Twitter List by TwitterDev</a
-            >
-            <script
+            > -->
+            <!-- <script
               async
               src="https://platform.twitter.com/widgets.js"
               charset="utf-8"
-            ></script>
+            ></script> -->
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Covid-19 Resources</h5>
@@ -146,25 +165,29 @@
                   class="grey-text text-lighten-3"
                   href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines"
                   target="_blank"
-                  >World Health Organization</a>
+                  >World Health Organization</a
+                >
               </li>
               <li>
                 <a
                   class="grey-text text-lighten-3"
                   href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/keythingstoknow.html?s_cid=10490:cdc%20covid%20vaccine:sem.ga:p:RG:GM:gen:PTN:FY21"
                   target="_blank"
-                  >Centers for Disease Control and Prevention</a>
+                  >Centers for Disease Control and Prevention</a
+                >
               </li>
               <li>
                 <a
                   class="grey-text text-lighten-3"
                   href="https://www.hhs.gov/coronavirus/covid-19-vaccines/index.html"
                   target="_blank"
-                  >U.S. Department of Health & Human Services</a>
+                  >U.S. Department of Health & Human Services</a
+                >
               </li>
               <li>
                 <a class="grey-text text-lighten-3" href="#!"
-                  >One more link or nah</a>
+                  >One more link or nah</a
+                >
               </li>
             </ul>
           </div>

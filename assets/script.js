@@ -1,18 +1,17 @@
-var searchButton = document.querySelector('#searchBtn')
-var stateSearchButton = document.querySelector('#state-search-btn');
+var searchButton = document.querySelector("#searchBtn");
+var stateSearchButton = document.querySelector("#state-search-btn");
 
 var options = {
-    option1: document.querySelector('#option1'),
-    option2: document.querySelector('#option2'),
-    option3: document.querySelector('#option3')
-}
+  option1: document.querySelector("#option1"),
+  option2: document.querySelector("#option2"),
+  option3: document.querySelector("#option3"),
+};
 
-// fetch api 
+// fetch api
 // find by zip
 // narrow range by option selected
 function getApi(options) {
-    var mapApi = `https://api.mapbox.com/geocoding/v5`
-    
+  var mapApi = `https://api.mapbox.com/geocoding/v5`;
 }
 
 // mapboxgl.baseApiUrl = 'https://api.mapbox.com';
@@ -27,64 +26,101 @@ function getApi(options) {
 // var locatorApi = `https://www.vaccinespotter.org/api/${locatorStates}`;
 
 // fetch api data for vaccine locators by state
-var stateInput = document.querySelector('#state')
-var searchInput = document.querySelector('#user-input')
-var zipCodeArr = new Array;
+var stateInput = document.querySelector("#state");
+var searchInput = document.querySelector("#user-input");
+var zipCodeArr = new Array();
 
 // var searchLocation = 'WA';
 function fetchLocation(location) {
-    console.log(location);
-    var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
-    fetch(locatorApi).then(function(data){
-        return data.json()
-    }).then(function(data){
-        var {name, address, city, state, postal_code, appointment_vaccine_types, appointments_available, appointments_available_2nd_dose_only, carries_vaccine, url} = data.features[0].properties;
-        console.log(data);
-        // console.log(city);
-        
-        for (var i = 0; i < data.features.length; i++) {
-            var option = document.createElement('option');
-            var zipCode = document.createTextNode(data.features[i].properties.postal_code);
-            option.appendChild(zipCode);
-            searchInput.appendChild(option);
-            console.log(zipCode);
-        }
-
-        console.log({name, address, city, state, postal_code, appointment_vaccine_types, appointments_available, appointments_available_2nd_dose_only, carries_vaccine, url});
+  console.log(location);
+  var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
+  fetch(locatorApi)
+    .then(function (data) {
+      return data.json();
     })
+    .then(function (data) {
+      // var {
+      //   name,
+      //   address,
+      //   city,
+      //   state,
+      //   postal_code,
+      //   appointment_vaccine_types,
+      //   appointments_available,
+      //   appointments_available_2nd_dose_only,
+      //   carries_vaccine,
+      //   url,
+      // } = data.features[0].properties;
+      var vaccinesite = data.features[0].properties;
+      var citeInfo = 
+      console.log(vaccinesite);
+      // console.log(city);
+
+      for (var i = 0; i < data.features.length; i++) {
+        var option = document.createElement("option");
+        var zipCode = document.createTextNode(
+          data.features[i].properties.postal_code
+        );
+        option.appendChild(zipCode);
+        searchInput.appendChild(option);
+        console.log(zipCode);
+      }
+
+      console.log({
+        name,
+        address,
+        city,
+        state,
+        postal_code,
+        appointment_vaccine_types,
+        appointments_available,
+        appointments_available_2nd_dose_only,
+        carries_vaccine,
+        url,
+      });
+    });
 }
 
-
-searchButton.addEventListener('click', function(event) {    
-    event.preventDefault();
-    // console.log('clickkkkked');
-
-    var location = stateInput.value;
-    console.log(location)  
-})
-
-stateSearchButton.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var location = stateInput.value;
-    fetchLocation(location);
-})
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-    
-  });
-  $( document ).ready(function(){
-    $(".dropdown-trigger").dropdown();
-    $('.carousel').carousel();
-  });
-  //map begins
-  mapboxgl.accessToken = 'pk.eyJ1IjoianZwcm9maXRzMjgiLCJhIjoiY2tuMjRzdmg4MTQ5cTJubW94bW41MzlnNyJ9.jM6FpByBc8lm0jphn2EQKw';
-    var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/jvprofits28/ckn2i7hxj2pcg17o5q8gi6ep4', // style URL
-        center: [-104.127, 36.603], // starting position [lng, lat]
-        zoom: 2 // starting zoom
+searchButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  map.flyTo({
+    //fly to zip location provided by user
+    center: [
+      -120.740135,
+      47.751076
+    ],
+    zoom:5,
+    essential: true // this animation is considered essential with respect to prefers-reduced-motion
     });
-  
+  // console.log('clickkkkked');
+
+  var location = stateInput.value;
+  console.log(location);
+});
+
+stateSearchButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var location = stateInput.value;
+  fetchLocation(location);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll("select");
+  var instances = M.FormSelect.init(elems, options);
+});
+$(document).ready(function () {
+  $(".dropdown-trigger").dropdown();
+  $(".carousel").carousel();
+});
+//map begins
+mapboxgl.accessToken =
+  "pk.eyJ1IjoianZwcm9maXRzMjgiLCJhIjoiY2tuMjRzdmg4MTQ5cTJubW94bW41MzlnNyJ9.jM6FpByBc8lm0jphn2EQKw";
+var map = new mapboxgl.Map({
+  container: "map", // container id
+  style: "mapbox://styles/jvprofits28/ckn2i7hxj2pcg17o5q8gi6ep4", // style URL
+  center: [-104.127, 36.603], // starting position [lng, lat]
+  zoom: 2, // starting zoom
+});
+
+
