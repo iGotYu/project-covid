@@ -78,7 +78,6 @@
       <section>
         <div class="row">
           <div class="input-field col s6">
-            <div class="btn" id="state-search-btn"><span>Submit</span></div>
             <input
               placeholder="Ex: WA, OR, VA"
               id="state"
@@ -86,15 +85,17 @@
               class="validate"
             />
             <label class="active" for="first_name2"
-              >Enter 2 Letter State Abbreviation</label
-            >
+              >Enter 2 Letter State Abbreviation</label>
+          </div>
+          <div class="btn" id="state-search-btn"><span>Submit</span>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <select
+            <!-- <select
               id="user-input">
-            </select>
+            </select> -->
+            <input placeholder="Ex: 12345" id="user-input" type="text" class="validate"/>
             <label class="active" for="first_name2"
               >Enter 5-digit Zip Code</label
             >
@@ -118,6 +119,7 @@
         <div id="map"></div>
        
       </section>
+      <div id="results-div"></div>
     </main>
     <footer class="page-footer">
       <div class="container">
