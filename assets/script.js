@@ -48,7 +48,7 @@ document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);
 map.on("click", function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ["test-json"], // replace this with the name of the layer
+    layers: ["test-json", "alabama"], // replace this with the name of the layer
   });
 
   if (!features.length) {
@@ -60,9 +60,9 @@ map.on("click", function (e) {
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
-      "<h3>" +
+      "<h5>" +
         feature.properties.name +
-        "</h3><p>" +
+        "</h5><p>" +
         feature.properties.address +
         "</p>"
     )
