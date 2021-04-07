@@ -43,6 +43,7 @@ var map = new mapboxgl.Map({
   center: [-120.7401, 47.7511], // starting position [lng, lat]
   zoom: 5, // starting zoom
 });
+
 //geocoder
 var geocoder = new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
@@ -50,6 +51,7 @@ var geocoder = new MapboxGeocoder({
 });
 
 document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+
 //map popups
 var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);
 map.on("click", function (e) {

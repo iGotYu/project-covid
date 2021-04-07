@@ -19,20 +19,25 @@
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+ 
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+
+    <link rel="stylesheet" 
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" 
+    type="text/css">
     <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <header class="“nav-bar”">
+    <header class="col-12 “nav-bar”">
       <!-- Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
         <li>
@@ -61,8 +66,8 @@
       <nav>
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo">Vaccine Locator</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
+          <ul class="right">
+            <li><a href="#reuslts-div">List</a></li>
             <li><a href="badges.html">Components</a></li>
             <!-- Dropdown Trigger -->
             <li>
@@ -80,18 +85,18 @@
         <div class="carousel">
           <a class="carousel-item" href="#one!"
             ><img
-              src="./images/Moderna.jpg"
+              src="./images/Moderna-trimmy.jpg"
               alt="Moderna Information"
             />
           </a>
           <a class="carousel-item" href="#two!"
-            ><img src="./images/Pfizer-BioNTech.jpg" 
+            ><img src="./images/Pfizer-BioNTech-trimmy.jpg" 
             alt="Pfizer Information"
           />
         </a>
           <a class="carousel-item" href="#three!"
             ><img
-              src="./images/J&J.jpg"
+              src="./images/J&J-trimmy.jpg"
               alt="Johnson & Jonson's Information"
           /></a>
           <a class="carousel-item" href="#four!"
@@ -100,6 +105,7 @@
         </div>
       </section>
       <section>
+        <p>List Input</p>
         <div class="row">
           <div class="input-field col s6">
             <input
@@ -125,24 +131,21 @@
             >
           </div>
         </div>
-        <div class="row">
-          <label>Location Within:</label>
-          <select class="browser-default">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="1" id="option1">10 miles</option>
-            <option value="2" id="option2">20 miles</option>
-            <option value="3" id="option3">30 miles</option>
-          </select>
-        </div>
+       
         <div>
           <a class="waves-effect waves-light btn" id="searchBtn"
             ><i class="material-icons right">place</i>Find Now!</a
           >
         </div>
         <!-- map on page -->
-        <div id="map"></div>
-        <div id="geocoder" class="geocoder"></div>
       </section>
+
+      <section>
+        <p> Location Input </p>
+        <div id="geocoder" class="geocoder"></div>
+        <div id="map"></div>
+      </section>
+      
       <div id="results-div"></div>
     </main>
     <!--footer begins-->
