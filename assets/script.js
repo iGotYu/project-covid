@@ -1,5 +1,4 @@
 var searchButton = document.querySelector("#searchBtn");
-var stateSearchButton = document.querySelector("#state-search-btn");
 
 var stateInput = document.querySelector("#state");
 var zipInput = document.querySelector("#user-input");
@@ -20,17 +19,10 @@ $(document).ready(function () {
 //button event listeners
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
-  // console.log('clickkkkked');
 
   var location = stateInput.value;
+  fetchLocation(location)
   console.log(location);
-});
-
-stateSearchButton.addEventListener("click", function (event) {
-  event.preventDefault();
-
-  var location = stateInput.value;
-  fetchLocation(location);
 });
 
 //Mapbox events
