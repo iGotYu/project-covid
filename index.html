@@ -24,6 +24,11 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+    <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -136,10 +141,11 @@
         </div>
         <!-- map on page -->
         <div id="map"></div>
-        
+        <div id="geocoder" class="geocoder"></div>
       </section>
       <div id="results-div"></div>
     </main>
+    <!--footer begins-->
     <footer class="page-footer">
       <div class="container">
         <div class="row">
