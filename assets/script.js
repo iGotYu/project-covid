@@ -8,17 +8,18 @@ var resultsDiv = document.querySelector("#results-div");
 
 // grabbing api for mapbox
 function getApi(options) {
-    var mapApi = `https://api.mapbox.com/geocoding/v5`;
+  var mapApi = `https://api.mapbox.com/geocoding/v5`;
 }
 
 // carousel and dropdown on page load
 $(document).ready(function () {
-    $(".dropdown-trigger").dropdown();
-    $(".carousel").carousel();
-  });
+  $(".dropdown-trigger").dropdown();
+  $(".carousel").carousel();
+});
 
 // button event listeners
 searchButton.addEventListener("click", function (event) {
+<<<<<<< HEAD
 event.preventDefault();
 // console.log('clickkkkked');
 
@@ -38,6 +39,25 @@ console.log(location);
 // Mapbox events
     mapboxgl.accessToken =
     "pk.eyJ1IjoianZwcm9maXRzMjgiLCJhIjoiY2tuMjRzdmg4MTQ5cTJubW94bW41MzlnNyJ9.jM6FpByBc8lm0jphn2EQKw";
+=======
+  event.preventDefault();
+  // console.log('clickkkkked');
+
+  var location = stateInput.value;
+  console.log(location);
+});
+
+stateSearchButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var location = stateInput.value;
+  fetchLocation(location);
+});
+
+//Mapbox events
+mapboxgl.accessToken =
+  "pk.eyJ1IjoianZwcm9maXRzMjgiLCJhIjoiY2tuMjRzdmg4MTQ5cTJubW94bW41MzlnNyJ9.jM6FpByBc8lm0jphn2EQKw";
+>>>>>>> develop
 // initial map start
 var map = new mapboxgl.Map({
   container: "map", // container id
@@ -45,7 +65,13 @@ var map = new mapboxgl.Map({
   center: GetLocation(zipcode), // starting position [lng, lat]
   zoom: 2, // starting zoom
 });
+//geocoder
+var geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl,
+});
 
+<<<<<<< HEAD
 
 // function GetLocation(address) {
 //     var geocoder = new google.maps.Geocoder();
@@ -60,11 +86,41 @@ var map = new mapboxgl.Map({
 //         }
 //     });
 // };
+=======
+document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+//map popups
+var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);
+map.on("click", function (e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ["test-json"], // replace this with the name of the layer
+  });
 
+  if (!features.length) {
+    return;
+  }
+>>>>>>> develop
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(
+      "<h3>" +
+        feature.properties.name +
+        "</h3><p>" +
+        feature.properties.address +
+        "</p>"
+    )
+    .addTo(map);
+});
 
 // Collecting List display data
 function fetchLocation(location) {
+<<<<<<< HEAD
 //   console.log(location)
+=======
+  console.log(location);
+>>>>>>> develop
   var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
   fetch(locatorApi)
     .then(function (data) {
@@ -85,12 +141,23 @@ function fetchLocation(location) {
       for (var i = 0; i < data.features.length; i++) {
         if (zipInput.value === data.features[i].properties.postal_code) {
           // name of location
+<<<<<<< HEAD
           var placeName = document.createElement('h5');
           placeName.setAttribute('class', 'location-name');
           var nameDataLocation = document.createTextNode(data.features[i].properties.name);
           var placeUrl = document.createElement('a');
           var urlDataLocation = data.features[i].properties.url;
           placeUrl.setAttribute('href', urlDataLocation)
+=======
+          var placeName = document.createElement("h5");
+          placeName.setAttribute("class", "location-name");
+          var nameDataLocation = document.createTextNode(
+            data.features[i].properties.name
+          );
+          var placeUrl = document.createElement("a");
+          var urlDataLocation = data.features[i].properties.url;
+          placeUrl.setAttribute("href", urlDataLocation);
+>>>>>>> develop
           placeUrl.appendChild(nameDataLocation);
           placeName.appendChild(placeUrl);
 
@@ -205,4 +272,8 @@ function fetchLocation(location) {
         }
       }
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop
