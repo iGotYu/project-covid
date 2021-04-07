@@ -1,15 +1,26 @@
 /*map styling begins here*/
 #map {
-  height: 500px;
-  width: 600px;
+  min-height: 200px;
+  min-width: 300px;
+}
+header,
+footer {
+  width: 100vw;
+}
+.carousel {
+  position: relative;
+  top: -63px;
+}
+
+.carousel .carousel-item {
+  width:250px !important;
 }
 
 .geocoder {
-  position: absolute;
   z-index: 1;
   width: 50%;
   left: 50%;
-  margin-left: -25%;
+  margin-bottom: 2px;
   top: 10px;
   }
   .mapboxgl-ctrl-geocoder {
