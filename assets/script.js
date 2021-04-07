@@ -16,14 +16,48 @@ $(document).ready(function () {
   $(".carousel").carousel();
 });
 
+// save user search input to local storage
+function saveInput() {
+  var stateZipInput = {
+    state: stateInput.value,
+    zip: zipInput.value
+  }
+  console.log(stateZipInput);
+  localStorage.setItem('state', JSON.stringify(stateZipInput.state));
+  localStorage.setItem('zip', JSON.stringify(stateZipInput.zip));
+}
+
+function getStateInput() {
+  var savedState = JSON.parse(localStorage.getItem('state'));
+
+  if (savedState !== null) {
+    stateInput.value = savedState;
+  } else {
+      return;
+  }
+}
+
+function getzipInput() {
+  var savedZip = JSON.parse(localStorage.getItem('zip'));
+
+  if (savedZip !== null) {
+    zipInput.value = savedZip;
+  } else {
+      return;
+  }
+}
+
 //button event listeners
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   var location = stateInput.value;
   fetchLocation(location)
+  saveInput();
   console.log(location);
 });
+getStateInput();
+getzipInput();
 
 //Mapbox events
 mapboxgl.accessToken =
