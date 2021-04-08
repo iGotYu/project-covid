@@ -89,8 +89,8 @@ if (feature.properties.appointments_available === true) {
       "<h5>" +
         feature.properties.name +
         "</h5><p>" +
-        feature.properties.address + ', ' + feature.properties.city + 
-        "</p>"+
+        feature.properties.address + ', ' + feature.properties.city + ', ' + feature.properties.state + ' ' + feature.properties.postal_code +
+        "</p>" +
         "<p><b>Appointments:</b>"+
         ' ' + aptAvailability +
         "</p>"
@@ -194,7 +194,7 @@ function fetchLocation(location) {
               "<b>Vaccine types available:</b> Johnson & Johnson";
           } else {
             placeVacType.innerHTML =
-              "<b>Vaccines available:</b> Information unavailable at this time. Please visit the location website for more information.";
+              "<b>Vaccines available:</b> Information unavailable at this time. Please contact location for more information.";
           }
 
           // appointments_available_2nd_dose_only
