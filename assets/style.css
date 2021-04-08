@@ -1,15 +1,36 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /*map styling begins here*/
 #map {
-  height: 500px;
-  width: 600px;
+  min-height: 500px;
+  min-width: 300px;
+}
+header,
+footer {
+  width: 100vw;
+}
+
+header nav.nav-header .nav-wrapper{
+  width: 70%;
+  margin: auto;
+}
+.carousel {
+  position: relative;
+  top: -85px;
+  height: 450px;
+}
+
+.carousel .carousel-item {
+  width:250px !important;
 }
 
 .geocoder {
-  position: absolute;
   z-index: 1;
   width: 50%;
   left: 50%;
-  margin-left: -25%;
+  margin-bottom: 2px;
   top: 10px;
   }
   .mapboxgl-ctrl-geocoder {
@@ -18,3 +39,43 @@
   #map {
   margin-top: 75px;
   }
+
+  .location-city {
+    display: inline-flex;
+  }
+
+  .location-state {
+    display: inline-flex;
+  }
+
+  .location-zip {
+    display: inline-flex;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .visible {
+    display: inline-flex;
+  }
+
+  .color-red {
+    color: red;
+  }
+
+.mapboxgl-ctrl-geocoder--icon-search {
+    left: 0px;
+    right: 12px;
+
+  }
+
+  @media only screen and (max-width:768px) {
+    nav .nav-wrapper .brand-logo {
+    font-size: 20px;
+    margin-left: 10px;
+    left: unset;
+    transform: unset;
+  }
+  }
+  
