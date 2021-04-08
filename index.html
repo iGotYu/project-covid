@@ -95,21 +95,11 @@
       </section>
       <section>
         <h3>Find a Covid-19 vaccine near you!</h3>
-        <p>Select a state and a valid zip code to begin</p>
-        <!-- <div class="row">
-          <div class="input-field col s6">
-            <input
-              placeholder="Ex: WA, OR, VA"
-              id="state"
-              type="text"
-              class="validate"
-            />
-            <label class="active" for="first_name2"
-              >Enter 2 Letter State Abbreviation</label>
-               make a select menu for states -->
-          <div class="input-field col s6">
+        <p>Select a valid state and zip code to begin</p>
+        <div class="row">
+          <div class="input-field col s6" id="state-selector">
           <select id="state">
-            <option value="" disabled selected>Choose your State</option>
+            <option value="" disabled selected>Select State</option>
             <option value="AK">AK</option>
             <option value="AZ">AZ</option>
             <option value="AR">AR</option>
@@ -164,30 +154,30 @@
           </select>
           <label>State:</label>
         </div>
-            
+        </div>      
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <!-- <select
-              id="user-input">
-            </select> -->
-            <input placeholder="Ex: 12345" id="user-input" type="text" class="validate"/>
+            <input placeholder="Ex: 12345" id="user-input" type="text"/>
             <label class="active" for="first_name2"
               >5-digit Zip Code</label
             >
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
           </div>
+          
         </div>
         <div>
-          <a class="waves-effect waves-light btn" href="#footer-div" id="searchBtn"
+          <a class="waves-effect waves-light btn" href="#results-div" id="searchBtn"
             ><i class="material-icons right">place</i>Find Now!</a
           >
         </div>
-        <!-- map on page -->
+        <p id="map-info">* Turn on location services for best map results in your area!</p>
       </section>
-
+      
+      <!-- map on page -->
       <section>
+        
         <div id="map"></div>
       </section>
       <!-- results div -->
@@ -204,8 +194,8 @@
     </main>
     <!--footer begins-->
     <footer class="page-footer" id="footer-div">
-      <div class="container">
-        <!-- <div class="row"> -->
+      <div class="container" id="footer-container">
+        <div class="row">
           <div class="col l6 s12">
           </div>
           <div class="col l4 offset-l2 s12">

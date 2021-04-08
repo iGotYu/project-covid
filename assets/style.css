@@ -41,8 +41,11 @@ nav,
   width:250px !important;
 }
 
-#map {
-  margin-top: 75px;
+#map-info {
+  margin-top: 35px;
+}
+  #map {
+  margin-top: 10px;
   }
 
 .location-city {
@@ -65,17 +68,8 @@ nav,
     display: inline-flex;
   }
 
-.color-red {
-    color: red;
-  }
- 
-  .container {
-    margin-bottom: 100px;
-  }
-
-  #disclaimer {
-    color: red;
-    font-size: 12px;
+  section select .state{
+    width: 40%;
   }
 
   @media only screen and (max-width:768px) {
@@ -85,4 +79,17 @@ nav,
     left: unset;
   }
   }
- 
+  
+  .container {
+    margin-bottom: 65px;
+  }
+
+  #disclaimer {
+    color: red;
+    font-size: 12px;
+  }
+
+  #footer-container {
+    width: 100%;
+  }
+  
