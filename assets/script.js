@@ -5,6 +5,7 @@ var zipInput = document.querySelector("#user-input");
 var zipCodeArr = new Array();
 var resultsDiv = document.querySelector("#results-div");
 
+
 //grabbing api for mapbox
 function getApi(options) {
   var mapApi = `https://api.mapbox.com/geocoding/v5`;
@@ -14,6 +15,7 @@ function getApi(options) {
 $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".carousel").carousel();
+  $('select').formSelect();
 });
 
 // save user search input to local storage
@@ -42,6 +44,11 @@ function getzipInput() {
 
   if (savedZip !== null) {
     zipInput.value = savedZip;
+    const specialInput =  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0]
+  
+    specialInput.value = savedZip
+    // specialInput.style.display="none"
+  
   } else {
       return;
   }
@@ -60,9 +67,9 @@ searchButton.addEventListener("click", function (event) {
   fetchLocation(location);
   saveInput();
   console.log(location);
+  getzipInput();
 });
-getStateInput();
-getzipInput();
+
 
 //Mapbox events
 mapboxgl.accessToken =
@@ -71,23 +78,22 @@ mapboxgl.accessToken =
 var map = new mapboxgl.Map({
   container: "map", // container id
   style: "mapbox://styles/jvprofits28/ckn2i7hxj2pcg17o5q8gi6ep4", // style URL
-  center: [-120.7401, 47.7511], // starting position [lng, lat]
-  zoom: 5, // starting zoom
+  center: [-95.7129, 37.0902], // starting position [lng, lat]
+  zoom: 2.75, // starting zoom
 });
 
-//geocoder
-var geocoder = new MapboxGeocoder({
-  accessToken: mapboxgl.accessToken,
-  mapboxgl: mapboxgl,
-});
-
-document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+window.navigator.geolocation.getCurrentPosition(function(position){
+  map.flyTo({
+    center: [position.coords.longitude, position.coords.latitude],
+    zoom:10,
+  })
+})
 
 //map popups
 var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);
 map.on("click", function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ["test-json"], // replace this with the name of the layer
+    layers: ["test-json", "alabama", "50-states"], // replace this with the name of the layer
   });
 
   if (!features.length) {
@@ -99,11 +105,16 @@ map.on("click", function (e) {
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
-      "<h3>" +
+      "<h5>" +
         feature.properties.name +
-        "</h3><p>" +
+        "</h5><p>" +
         feature.properties.address +
+        "</p>"+
+        "<p> Available Appointments:"+
+        feature.properties.appointments_available+
+        
         "</p>"
+
     )
     .addTo(map);
 });
@@ -237,3 +248,5 @@ function fetchLocation(location) {
       }
     });
 }
+getStateInput();
+// getzipInput();
