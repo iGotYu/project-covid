@@ -1,6 +1,6 @@
 /*map styling begins here*/
 #map {
-  min-height: 400px;
+  min-height: 500px;
   min-width: 300px;
 }
 header,
@@ -9,7 +9,8 @@ footer {
 }
 .carousel {
   position: relative;
-  top: -65px;
+  top: -85px;
+  height: 450px;
 }
 
 .carousel .carousel-item {
