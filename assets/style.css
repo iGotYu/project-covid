@@ -19,7 +19,7 @@ header nav.nav-header .nav-wrapper{
 .carousel {
   position: relative;
   top: -85px;
-  height: 450px;
+  height: 580px;
 }
 
 .carousel .carousel-item {
@@ -67,3 +67,11 @@ header nav.nav-header .nav-wrapper{
   }
   }
   
+  .container {
+    margin-bottom: 100px;
+  }
+
+  #disclaimer {
+    color: red;
+    font-size: 12px;
+  }
