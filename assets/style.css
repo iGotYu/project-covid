@@ -26,16 +26,6 @@ header nav.nav-header .nav-wrapper{
   width:250px !important;
 }
 
-.geocoder {
-  z-index: 1;
-  width: 50%;
-  left: 50%;
-  margin-bottom: 2px;
-  top: 10px;
-  }
-  .mapboxgl-ctrl-geocoder {
-  min-width: 100%;
-  }
   #map {
   margin-top: 75px;
   }
@@ -64,10 +54,8 @@ header nav.nav-header .nav-wrapper{
     color: red;
   }
 
-.mapboxgl-ctrl-geocoder--icon-search {
-    left: 0px;
-    right: 12px;
-
+  section select .state{
+    width: 40%;
   }
 
   @media only screen and (max-width:768px) {
