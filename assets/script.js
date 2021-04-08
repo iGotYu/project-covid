@@ -15,6 +15,7 @@ function getApi(options) {
 $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".carousel").carousel();
+  $('select').formSelect();
 });
 
 // save user search input to local storage
@@ -46,7 +47,7 @@ function getzipInput() {
     const specialInput =  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0]
   
     specialInput.value = savedZip
-    specialInput.style.display="none"
+    // specialInput.style.display="none"
   
   } else {
       return;
@@ -81,14 +82,12 @@ var map = new mapboxgl.Map({
   zoom: 2.75, // starting zoom
 });
 
-//geocoder
-var geocoder = new MapboxGeocoder({
-  accessToken: mapboxgl.accessToken,
-  mapboxgl: mapboxgl,
-  // setAttribute: visibility = hidden
-});
-
-document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+window.navigator.geolocation.getCurrentPosition(function(position){
+  map.flyTo({
+    center: [position.coords.longitude, position.coords.latitude],
+    zoom:10,
+  })
+})
 
 //map popups
 var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);

@@ -12,6 +12,10 @@ footer {
   width: 100vw;
 }
 
+header nav.nav-header .nav-wrapper{
+  width: 70%;
+  margin: auto;
+}
 .carousel {
   position: relative;
   top: -85px;
@@ -59,3 +63,19 @@ footer {
   .color-red {
     color: red;
   }
+
+.mapboxgl-ctrl-geocoder--icon-search {
+    left: 0px;
+    right: 12px;
+
+  }
+
+  @media only screen and (max-width:768px) {
+    nav .nav-wrapper .brand-logo {
+    font-size: 20px;
+    margin-left: 10px;
+    left: unset;
+    transform: unset;
+  }
+  }
+  
