@@ -54,16 +54,10 @@ header nav.nav-header .nav-wrapper{
     color: red;
   }
 
-  section select .state{
-    width: 40%;
-  }
-
   @media only screen and (max-width:768px) {
     nav .nav-wrapper .brand-logo {
     font-size: 20px;
     margin-left: 10px;
     left: unset;
-    transform: unset;
   }
   }
-  

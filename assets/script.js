@@ -29,31 +29,6 @@ function saveInput() {
   localStorage.setItem('zip', JSON.stringify(stateZipInput.zip));
 }
 
-// function getStateInput() {
-//   var savedState = JSON.parse(localStorage.getItem('state'));
-
-//   if (savedState !== null) {
-//     stateInput.value = savedState;
-//   } else {
-//       return;
-//   }
-// }
-
-// function getzipInput() {
-//   var savedZip = JSON.parse(localStorage.getItem('zip'));
-
-//   if (savedZip !== null) {
-//     zipInput.value = savedZip;
-//     const specialInput =  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0]
-  
-//     specialInput.value = savedZip
-//     // specialInput.style.display="none"
-  
-//   } else {
-//       return;
-//   }
-// }
-
 //button event listeners
 searchButton.addEventListener("click", function (event) {
   // event.preventDefault();
@@ -65,6 +40,7 @@ searchButton.addEventListener("click", function (event) {
   console.log(resultsDiv.offsetTop);
   var location = stateInput.value;
   fetchLocation(location);
+
   saveInput();
   console.log(location);
   // getzipInput();
@@ -137,7 +113,11 @@ function fetchLocation(location) {
         zipInput.appendChild(option);
         // console.log(zipCode);
       }
-
+      if (data.features.length ===0){
+        document.createTextNode(
+          "invalid input"
+        )
+      }else{
       // for info on locations by state/zip search
       for (var i = 0; i < data.features.length; i++) {
        if (zipInput.value === data.features[i].properties.postal_code) {
@@ -246,5 +226,6 @@ function fetchLocation(location) {
           resultsDiv.appendChild(noLocation);
         }
       }
+    } 
     });
 }
