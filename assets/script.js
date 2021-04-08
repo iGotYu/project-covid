@@ -29,31 +29,6 @@ function saveInput() {
   localStorage.setItem('zip', JSON.stringify(stateZipInput.zip));
 }
 
-// function getStateInput() {
-//   var savedState = JSON.parse(localStorage.getItem('state'));
-
-//   if (savedState !== null) {
-//     stateInput.value = savedState;
-//   } else {
-//       return;
-//   }
-// }
-
-// function getzipInput() {
-//   var savedZip = JSON.parse(localStorage.getItem('zip'));
-
-//   if (savedZip !== null) {
-//     zipInput.value = savedZip;
-//     const specialInput =  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0]
-  
-//     specialInput.value = savedZip
-//     // specialInput.style.display="none"
-  
-//   } else {
-//       return;
-//   }
-// }
-
 //button event listeners
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
@@ -261,7 +236,8 @@ function fetchLocation(location) {
         //   resultsDiv.appendChild(noLocation);
         //   // break;
         //   ;
-        }
+        // }
       }
+    }
     });
 }

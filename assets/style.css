@@ -16,10 +16,25 @@ header nav.nav-header .nav-wrapper{
   width: 70%;
   margin: auto;
 }
+
+main .white-space{
+height:400px;
+}
+
+nav,
+.page-footer{
+  background-color:#8e24aa;;
+}
+
+
+.nav-wrapper{
+  z-index: 1;
+}
+
 .carousel {
   position: relative;
-  top: -85px;
-  height: 580px;
+  top: -145px;
+  height: 565px;
 }
 
 .carousel .carousel-item {
@@ -33,23 +48,23 @@ header nav.nav-header .nav-wrapper{
   margin-top: 10px;
   }
 
-  .location-city {
+.location-city {
     display: inline-flex;
   }
 
-  .location-state {
+.location-state {
     display: inline-flex;
   }
 
-  .location-zip {
+.location-zip {
     display: inline-flex;
   }
 
-  .hidden {
+.hidden {
     display: none;
   }
 
-  .visible {
+.visible {
     display: inline-flex;
   }
 
@@ -62,7 +77,6 @@ header nav.nav-header .nav-wrapper{
     font-size: 20px;
     margin-left: 10px;
     left: unset;
-    transform: unset;
   }
   }
   
