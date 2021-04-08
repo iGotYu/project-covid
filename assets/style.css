@@ -16,57 +16,59 @@ header nav.nav-header .nav-wrapper{
   width: 70%;
   margin: auto;
 }
+
+main .white-space{
+height:400px;
+}
+
+nav,
+.page-footer{
+  background-color:#8e24aa;;
+}
+
+
+.nav-wrapper{
+  z-index: 1;
+}
+
 .carousel {
   position: relative;
-  top: -85px;
-  height: 580px;
+  top: -145px;
+  height: 565px;
 }
 
 .carousel .carousel-item {
   width:250px !important;
 }
 
-  #map {
+#map {
   margin-top: 75px;
   }
 
-  .location-city {
+.location-city {
     display: inline-flex;
   }
 
-  .location-state {
+.location-state {
     display: inline-flex;
   }
 
-  .location-zip {
+.location-zip {
     display: inline-flex;
   }
 
-  .hidden {
+.hidden {
     display: none;
   }
 
-  .visible {
+.visible {
     display: inline-flex;
   }
 
-  .color-red {
+.color-red {
     color: red;
   }
-
-  section select .state{
-    width: 40%;
-  }
-
-  @media only screen and (max-width:768px) {
-    nav .nav-wrapper .brand-logo {
-    font-size: 20px;
-    margin-left: 10px;
-    left: unset;
-    transform: unset;
-  }
-  }
-  
+ 
   .container {
     margin-bottom: 100px;
   }
@@ -75,3 +77,12 @@ header nav.nav-header .nav-wrapper{
     color: red;
     font-size: 12px;
   }
+
+  @media only screen and (max-width:768px) {
+    nav .nav-wrapper .brand-logo {
+    font-size: 20px;
+    margin-left: 10px;
+    left: unset;
+  }
+  }
+ 
