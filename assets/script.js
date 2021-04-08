@@ -31,13 +31,13 @@ function saveInput() {
 
 //button event listeners
 searchButton.addEventListener("click", function (event) {
-  // event.preventDefault();
+  event.preventDefault();
   var resultsContainer = document.querySelector('#results-container');
-  resultsContainer.classList.remove('hidden');
-  resultsContainer.classList.add('visible');
-  resultsDiv.textContent = '';
-
-  console.log(resultsDiv.offsetTop);
+    resultsContainer.classList.remove('hidden');
+    resultsContainer.classList.add('visible');
+    resultsDiv.textContent = '';
+  
+  // console.log(resultsDiv.offsetTop);
   var location = stateInput.value;
   fetchLocation(location);
 
@@ -78,17 +78,23 @@ map.on("click", function (e) {
 
   var feature = features[0];
 
+var aptAvailability; 
+if (feature.properties.appointments_available === true) {
+  aptAvailability = "🟢 Available" 
+} else {
+  aptAvailability = "🔴 Unavailable";
+}
+
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
       "<h5>" +
         feature.properties.name +
         "</h5><p>" +
-        feature.properties.address +
+        feature.properties.address + ', ' + feature.properties.city + 
         "</p>"+
-        "<p> Available Appointments:"+
-        feature.properties.appointments_available+
-        
+        "<p><b>Appointments:</b>"+
+        ' ' + aptAvailability +
         "</p>"
 
     )

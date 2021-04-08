@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vaccine Locator</title>
+    <title>Covid-19 Vaccine Finder</title>
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -58,7 +58,7 @@
 
       <nav class="nav-header">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Vaccine Locator</a>
+          <a href="#!" class="brand-logo">Vaccine Finder</a>
           <ul class="right">
             <!-- Dropdown Trigger -->
             <li>
@@ -72,7 +72,7 @@
     </header>
 
     <main class="container">
-      <p>Welcome to Vaccine Locator! To find a vaccine near you input your state code and zip Code in the provided space! If you would like more information based on the vaccine type feel free to check out the links in the 'Vaccine Information' tab or scroll through our images. </p>
+      <h5 id="intro-text"></h5>
       <section>
         <div class="carousel">
           <a class="carousel-item" href="#one!"
@@ -94,8 +94,24 @@
         </div>
       </section>
       <section>
+<<<<<<< HEAD
         <h3>List Input</h3>
         <p>Select state and input zipcode </p>
+=======
+        <h3>Find a Covid-19 vaccine near you!</h3>
+        <p>Select a state and a valid zip code to begin</p>
+        <!-- <div class="row">
+          <div class="input-field col s6">
+            <input
+              placeholder="Ex: WA, OR, VA"
+              id="state"
+              type="text"
+              class="validate"
+            />
+            <label class="active" for="first_name2"
+              >Enter 2 Letter State Abbreviation</label>
+               make a select menu for states -->
+>>>>>>> develop
           <div class="input-field col s6">
           <select id="state">
             <option value="" disabled selected>Choose your State</option>
@@ -151,7 +167,7 @@
             <option value="PR">PR</option>
             <option value="VI">VI</option>
           </select>
-          <label>Select Your State:</label>
+          <label>State:</label>
         </div>
             
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
@@ -163,7 +179,7 @@
             </select> -->
             <input placeholder="Ex: 12345" id="user-input" type="text" class="validate"/>
             <label class="active" for="first_name2"
-              >Enter 5-digit Zip Code</label
+              >5-digit Zip Code</label
             >
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
           </div>
@@ -189,6 +205,7 @@
           </div>
         </div>
       </div>
+      <p id="disclaimer">** We're working hard to contially collect and update data for the Covid-19 vaccine finder. 'Unknown' or 'undefined' just means that we're still working on collecting data and we'll have the information for you soon!</p>
     </main>
     <!--footer begins-->
     <footer class="page-footer" id="footer-div">
