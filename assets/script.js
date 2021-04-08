@@ -61,13 +61,12 @@ searchButton.addEventListener("click", function (event) {
     resultsContainer.classList.remove('hidden');
     resultsContainer.classList.add('visible');
     resultsDiv.textContent = '';
-  
   // console.log(resultsDiv.offsetTop);
-  var location = stateInput.value;
-  fetchLocation(location);
-  saveInput();
-  console.log(location);
-  // getzipInput();
+    var location = stateInput.value;
+    fetchLocation(location);
+    saveInput();
+    console.log(location);
+    // getzipInput();
 });
 
 
@@ -127,13 +126,14 @@ if (feature.properties.appointments_available === true) {
 
 //Collecting List display data
 function fetchLocation(location) {
-  console.log(location);
+  // console.log(location);
   var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
   fetch(locatorApi)
     .then(function (data) {
       return data.json();
     })
     .then(function (data) {
+      // console.log(data);
       for (var i = 0; i < data.features.length; i++) {
         var option = document.createElement("option");
         var zipCode = document.createTextNode(
@@ -143,7 +143,15 @@ function fetchLocation(location) {
         zipInput.appendChild(option);
         // console.log(zipCode);
       }
-
+      var isValidZip = data.features.some(location => location.properties.postal_code === zipInput.value)
+      // console.log(isValidZip);
+      if (!isValidZip) {
+        var noLocation = document.createElement("h6");
+          noLocation.setAttribute("class", "no-location");
+          noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
+          resultsDiv.appendChild(noLocation);
+          return;
+      }
       // for info on locations by state/zip search
       for (var i = 0; i < data.features.length; i++) {
        if (zipInput.value === data.features[i].properties.postal_code) {
@@ -246,10 +254,13 @@ function fetchLocation(location) {
           resultsDiv.appendChild(placeVacType);
 
           // console.log(placeName);
-        } else {
-          var noLocation = document.createElement("h5");
-          noLocation.setAttribute("class", "no-location");
-          resultsDiv.appendChild(noLocation);
+        // } else {
+        //   var noLocation = document.createElement("h6");
+        //   noLocation.setAttribute("class", "no-location");
+        //   // noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
+        //   resultsDiv.appendChild(noLocation);
+        //   // break;
+        //   ;
         }
       }
     });

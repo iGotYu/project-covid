@@ -26,8 +26,11 @@ header nav.nav-header .nav-wrapper{
   width:250px !important;
 }
 
+#map-info {
+  margin-top: 35px;
+}
   #map {
-  margin-top: 75px;
+  margin-top: 10px;
   }
 
   .location-city {
@@ -50,10 +53,6 @@ header nav.nav-header .nav-wrapper{
     display: inline-flex;
   }
 
-  .color-red {
-    color: red;
-  }
-
   section select .state{
     width: 40%;
   }
@@ -68,10 +67,15 @@ header nav.nav-header .nav-wrapper{
   }
   
   .container {
-    margin-bottom: 100px;
+    margin-bottom: 65px;
   }
 
   #disclaimer {
     color: red;
     font-size: 12px;
   }
+
+  #footer-container {
+    width: 100%;
+  }
+  
