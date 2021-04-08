@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vaccine Locator</title>
+    <title>Covid-19 Vaccine Finder</title>
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -24,12 +24,6 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
       rel="stylesheet"
     />
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-
-    <link rel="stylesheet" 
-    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" 
-    type="text/css">
-    <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
@@ -64,7 +58,7 @@
 
       <nav class="nav-header">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Vaccine Locator</a>
+          <a href="#!" class="brand-logo">Vaccine Finder</a>
           <ul class="right">
             <!-- Dropdown Trigger -->
             <li>
@@ -78,130 +72,116 @@
     </header>
 
     <main class="container">
-      <p>Welcome to Vaccine Locator! To find a vaccine near you input your state code and zip Code in the provided space! If you would like more information based on the vaccine type feel free to check out the links in the 'Vaccine Information' tab or scroll through our images. </p>
-      <section>
+      <h5 id="intro-text"></h5>
+      <section class="white-space">
         <div class="carousel">
           <a class="carousel-item" href="#one!"
             ><img
-              src="./images/Moderna-trimmy.jpg"
+              src="./images/Moderna.jpg"
               alt="Moderna Information"
             />
           </a>
           <a class="carousel-item" href="#two!"
-            ><img src="./images/Pfizer-BioNTech-trimmy.jpg" 
+            ><img src="./images/pfizer.jpg" 
             alt="Pfizer Information"
           />
         </a>
           <a class="carousel-item" href="#three!"
             ><img
-              src="./images/J&J-trimmy.jpg"
+              src="./images/J&J.jpg"
               alt="Johnson & Jonson's Information"
-          /></a>
-          <a class="carousel-item" href="#four!"
-            ><img src="./images/vaccine process.jpeg"
           /></a>
         </div>
       </section>
       <section>
-        <h3>List Input</h3>
-        <p>Select state and input zipcode for List items</p>
-        <!-- <div class="row">
-          <div class="input-field col s6">
-            <input
-              placeholder="Ex: WA, OR, VA"
-              id="state"
-              type="text"
-              class="validate"
-            />
-            <label class="active" for="first_name2"
-              >Enter 2 Letter State Abbreviation</label>
-               make a select menu for states -->
-          <div class="input-field col s6">
+        <h3>Find a Covid-19 vaccine near you!</h3>
+        <p>Select a valid state and zip code to begin</p>
+        <div class="row">
+          <div class="input-field col s6" id="state-selector">
           <select id="state">
-            <option value="" disabled selected>Choose your State</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="" disabled selected>Select State</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+            <option value="PR">PR</option>
+            <option value="VI">VI</option>
           </select>
-          <label>Materialize Select</label>
+          <label>State:</label>
         </div>
-      
-            
+        </div>      
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <!-- <select
-              id="user-input">
-            </select> -->
-            <input placeholder="Ex: 12345" id="user-input" type="text" class="validate"/>
+            <input placeholder="Ex: 12345" id="user-input" type="text"/>
             <label class="active" for="first_name2"
-              >Enter 5-digit Zip Code</label
+              >5-digit Zip Code</label
             >
             <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
           </div>
+          
         </div>
         <div>
-          <a class="waves-effect waves-light btn" href="#footer-div" id="searchBtn"
+          <a class="waves-effect waves-light btn" href="#results-div" id="searchBtn"
             ><i class="material-icons right">place</i>Find Now!</a
           >
         </div>
-        <!-- map on page -->
+        <p id="map-info">* Turn on location services for best map results in your area!</p>
       </section>
-
+      
+      <!-- map on page -->
       <section>
+        
         <div id="map"></div>
       </section>
       <!-- results div -->
-      <div class="col s12 m7 hidden" id="results-container">
+      <div class="col s12 m7 visible hidden" id="results-container">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
@@ -210,27 +190,14 @@
           </div>
         </div>
       </div>
+      <p id="disclaimer">** We're working hard to contially collect and update data for the Covid-19 vaccine finder. 'Unknown' or 'undefined' just means that we're still working on collecting data and we'll have the information for you soon!</p>
     </main>
     <!--footer begins-->
     <footer class="page-footer" id="footer-div">
-      <div class="container">
+      <div class="container" id="footer-container">
         <div class="row">
           <div class="col l6 s12">
-            <!-- <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            <a
-              class="twitter-timeline"
-              data-width="400"
-              data-height="400"
-              href="https://twitter.com/TwitterDev/lists/national-parks?ref_src=twsrc%5Etfw"
-              >A Twitter List by TwitterDev</a
-            >
-            <script
-              async
-              src="https://platform.twitter.com/widgets.js"
-              charset="utf-8"
-            ></script>
-          </div> -->
+          </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Covid-19 Resources</h5>
             <ul>
@@ -260,11 +227,11 @@
               </li>
             </ul>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
       <div class="footer-copyright">
         <div class="container">
-          © 2014 Copyright Text
+          © 2021 Team 6
           <a
             class="grey-text text-lighten-4 right"
             href="https://www.mapbox.com/about/maps"

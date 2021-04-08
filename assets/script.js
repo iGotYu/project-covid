@@ -29,45 +29,19 @@ function saveInput() {
   localStorage.setItem('zip', JSON.stringify(stateZipInput.zip));
 }
 
-function getStateInput() {
-  var savedState = JSON.parse(localStorage.getItem('state'));
-
-  if (savedState !== null) {
-    stateInput.value = savedState;
-  } else {
-      return;
-  }
-}
-
-function getzipInput() {
-  var savedZip = JSON.parse(localStorage.getItem('zip'));
-
-  if (savedZip !== null) {
-    zipInput.value = savedZip;
-    const specialInput =  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0]
-  
-    specialInput.value = savedZip
-    // specialInput.style.display="none"
-  
-  } else {
-      return;
-  }
-}
-
 //button event listeners
 searchButton.addEventListener("click", function (event) {
-  // event.preventDefault();
+  event.preventDefault();
   var resultsContainer = document.querySelector('#results-container');
-  resultsContainer.classList.remove('hidden');
-  resultsContainer.classList.add('visible');
-  resultsDiv.textContent = '';
-
-  console.log(resultsDiv.offsetTop);
-  var location = stateInput.value;
-  fetchLocation(location);
-  saveInput();
-  console.log(location);
-  getzipInput();
+    resultsContainer.classList.remove('hidden');
+    resultsContainer.classList.add('visible');
+    resultsDiv.textContent = '';
+  // console.log(resultsDiv.offsetTop);
+    var location = stateInput.value;
+    fetchLocation(location);
+    saveInput();
+    console.log(location);
+    // getzipInput();
 });
 
 
@@ -85,7 +59,7 @@ var map = new mapboxgl.Map({
 window.navigator.geolocation.getCurrentPosition(function(position){
   map.flyTo({
     center: [position.coords.longitude, position.coords.latitude],
-    zoom:10,
+    zoom:11,
   })
 })
 
@@ -102,17 +76,23 @@ map.on("click", function (e) {
 
   var feature = features[0];
 
+var aptAvailability; 
+if (feature.properties.appointments_available === true) {
+  aptAvailability = "🟢 Available" 
+} else {
+  aptAvailability = "🔴 Unavailable";
+}
+
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
       "<h5>" +
         feature.properties.name +
         "</h5><p>" +
-        feature.properties.address +
-        "</p>"+
-        "<p> Available Appointments:"+
-        feature.properties.appointments_available+
-        
+        feature.properties.address + ', ' + feature.properties.city + ', ' + feature.properties.state + ' ' + feature.properties.postal_code +
+        "</p>" +
+        "<p><b>Appointments:</b>"+
+        ' ' + aptAvailability +
         "</p>"
 
     )
@@ -121,13 +101,14 @@ map.on("click", function (e) {
 
 //Collecting List display data
 function fetchLocation(location) {
-  console.log(location);
+  // console.log(location);
   var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
   fetch(locatorApi)
     .then(function (data) {
       return data.json();
     })
     .then(function (data) {
+      // console.log(data);
       for (var i = 0; i < data.features.length; i++) {
         var option = document.createElement("option");
         var zipCode = document.createTextNode(
@@ -137,7 +118,15 @@ function fetchLocation(location) {
         zipInput.appendChild(option);
         // console.log(zipCode);
       }
-
+      var isValidZip = data.features.some(location => location.properties.postal_code === zipInput.value)
+      // console.log(isValidZip);
+      if (!isValidZip) {
+        var noLocation = document.createElement("h6");
+          noLocation.setAttribute("class", "no-location");
+          noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
+          resultsDiv.appendChild(noLocation);
+          return;
+      }
       // for info on locations by state/zip search
       for (var i = 0; i < data.features.length; i++) {
        if (zipInput.value === data.features[i].properties.postal_code) {
@@ -205,7 +194,7 @@ function fetchLocation(location) {
               "<b>Vaccine types available:</b> Johnson & Johnson";
           } else {
             placeVacType.innerHTML =
-              "<b>Vaccines available:</b> Information unavailable at this time. Please visit the location website for more information.";
+              "<b>Vaccines available:</b> Information unavailable at this time. Please contact location for more information.";
           }
 
           // appointments_available_2nd_dose_only
@@ -240,13 +229,15 @@ function fetchLocation(location) {
           resultsDiv.appendChild(placeVacType);
 
           // console.log(placeName);
-        } else {
-          var noLocation = document.createElement("h5");
-          noLocation.setAttribute("class", "no-location");
-          resultsDiv.appendChild(noLocation);
-        }
+        // } else {
+        //   var noLocation = document.createElement("h6");
+        //   noLocation.setAttribute("class", "no-location");
+        //   // noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
+        //   resultsDiv.appendChild(noLocation);
+        //   // break;
+        //   ;
+        // }
       }
+    }
     });
 }
-getStateInput();
-// getzipInput();
