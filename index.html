@@ -116,6 +116,7 @@
             />
             <label class="active" for="first_name2"
               >Enter 2 Letter State Abbreviation</label>
+            <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
         </div>
         <div class="row">
           <div class="input-field col s6">
@@ -126,10 +127,11 @@
             <label class="active" for="first_name2"
               >Enter 5-digit Zip Code</label
             >
+            <span class="helper-text" data-error="invalid entry" data-success="valid"></span>
           </div>
         </div>
         <div>
-          <a class="waves-effect waves-light btn" href="#results-div" id="searchBtn"
+          <a class="waves-effect waves-light btn" href="#footer-div" id="searchBtn"
             ><i class="material-icons right">place</i>Find Now!</a
           >
         </div>
@@ -141,11 +143,19 @@
         <div id="geocoder" class="geocoder"></div>
         <div id="map"></div>
       </section>
-      
-      <div id="results-div"></div>
+      <!-- results div -->
+      <div class="col s12 m7 hidden" id="results-container">
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div class="card-content">
+              <div id="results-div"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <!--footer begins-->
-    <footer class="page-footer">
+    <footer class="page-footer" id="footer-div">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
