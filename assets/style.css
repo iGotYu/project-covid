@@ -63,6 +63,10 @@ section select .state {
   display: inline-flex;
 }
 
+.find-btn .btn{
+  background-color: #7b1fa2;
+}
+
 .hidden {
   display: none;
 }
