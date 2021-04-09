@@ -29,14 +29,6 @@ section select .state {
   margin-bottom: 65px;
 }
 
-.visible {
-  display: inline;
-}
-
-.hidden {
-  display: none;
-}
-
 .nav-wrapper {
   z-index: 1;
 }
@@ -88,6 +80,10 @@ section select .state {
   margin-top: 10px;
   min-height: 500px;
   min-width: 300px;
+}
+
+.visible {
+  display: inline;
 }
 
 .hidden {
