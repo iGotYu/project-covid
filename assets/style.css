@@ -67,10 +67,6 @@ section select .state {
   background-color: #7b1fa2;
 }
 
-.hidden {
-  display: none;
-}
-
 .visible {
   display: inline-flex;
 }
@@ -92,6 +88,10 @@ section select .state {
   margin-top: 10px;
   min-height: 500px;
   min-width: 300px;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
