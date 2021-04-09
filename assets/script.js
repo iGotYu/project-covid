@@ -109,7 +109,6 @@ function fetchLocation(location) {
       return data.json();
     })
     .then(function (data) {
-      // console.log(data);
       for (var i = 0; i < data.features.length; i++) {
         var option = document.createElement("option");
         var zipCode = document.createTextNode(

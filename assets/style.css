@@ -2,32 +2,42 @@ html {
   scroll-behavior: smooth;
 }
 
-/*map styling begins here*/
-#map {
-  min-height: 500px;
-  min-width: 300px;
-}
 header,
 footer {
   width: 100vw;
 }
 
-header nav.nav-header .nav-wrapper{
+header nav.nav-header .nav-wrapper {
   width: 70%;
   margin: auto;
 }
 
-main .white-space{
-height:400px;
+main .white-space {
+  height: 400px;
 }
 
 nav,
-.page-footer{
-  background-color:#8e24aa;;
+.page-footer {
+  background-color: #8e24aa;
 }
 
+section select .state {
+  width: 40%;
+}
 
-.nav-wrapper{
+.container {
+  margin-bottom: 65px;
+}
+
+.visible {
+  display: inline;
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-wrapper {
   z-index: 1;
 }
 
@@ -38,65 +48,52 @@ nav,
 }
 
 .carousel .carousel-item {
-  width:250px !important;
+  width: 250px !important;
+}
+
+.location-city {
+  display: inline-flex;
+}
+
+.location-state {
+  display: inline-flex;
+}
+
+.location-zip {
+  display: inline-flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline-flex;
+}
+
+#disclaimer {
+  color: red;
+  font-size: 12px;
+}
+
+#footer-container {
+  width: 100%;
 }
 
 #map-info {
   margin-top: 35px;
 }
-  #map {
+
+#map {
   margin-top: 10px;
-  }
+  min-height: 500px;
+  min-width: 300px;
+}
 
-.location-city {
-    display: inline-flex;
-  }
-
-.location-state {
-    display: inline-flex;
-  }
-
-.location-zip {
-    display: inline-flex;
-  }
-
-.hidden {
-    display: none;
-  }
-
-.visible {
-    display: inline-flex;
-  }
-
-  section select .state{
-    width: 40%;
-  }
-
-  @media only screen and (max-width:768px) {
-    nav .nav-wrapper .brand-logo {
+@media only screen and (max-width: 768px) {
+  nav .nav-wrapper .brand-logo {
     font-size: 20px;
     margin-left: 10px;
     left: unset;
   }
-  }
-  
-  .container {
-    margin-bottom: 65px;
-  }
-
-  #disclaimer {
-    color: red;
-    font-size: 12px;
-  }
-
-  #footer-container {
-    width: 100%;
-  }
-  
-.visible {
-  display: inline;
-}
-
-.hidden {
-  display: none;
 }
