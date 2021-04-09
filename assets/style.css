@@ -29,14 +29,6 @@ section select .state {
   margin-bottom: 65px;
 }
 
-.visible {
-  display: inline;
-}
-
-.hidden {
-  display: none;
-}
-
 .nav-wrapper {
   z-index: 1;
 }
@@ -63,8 +55,8 @@ section select .state {
   display: inline-flex;
 }
 
-.hidden {
-  display: none;
+.find-btn .btn{
+  background-color: #7b1fa2;
 }
 
 .visible {
@@ -88,6 +80,14 @@ section select .state {
   margin-top: 10px;
   min-height: 500px;
   min-width: 300px;
+}
+
+.visible {
+  display: inline;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
