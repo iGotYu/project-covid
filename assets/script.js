@@ -5,7 +5,6 @@ var zipInput = document.querySelector("#user-input");
 var zipCodeArr = new Array();
 var resultsDiv = document.querySelector("#results-div");
 
-
 //grabbing api for mapbox
 function getApi(options) {
   var mapApi = `https://api.mapbox.com/geocoding/v5`;
@@ -15,35 +14,32 @@ function getApi(options) {
 $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".carousel").carousel();
-  $('select').formSelect();
+  $("select").formSelect();
 });
 
 // save user search input to local storage
 function saveInput() {
   var stateZipInput = {
     state: stateInput.value,
-    zip: zipInput.value
-  }
+    zip: zipInput.value,
+  };
   console.log(stateZipInput);
-  localStorage.setItem('state', JSON.stringify(stateZipInput.state));
-  localStorage.setItem('zip', JSON.stringify(stateZipInput.zip));
+  localStorage.setItem("state", JSON.stringify(stateZipInput.state));
+  localStorage.setItem("zip", JSON.stringify(stateZipInput.zip));
 }
 
 //button event listeners
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
-  var resultsContainer = document.querySelector('#results-container');
-    resultsContainer.classList.remove('hidden');
-    resultsContainer.classList.add('visible');
-    resultsDiv.textContent = '';
-  // console.log(resultsDiv.offsetTop);
-    var location = stateInput.value;
-    fetchLocation(location);
-    saveInput();
-    console.log(location);
-    // getzipInput();
+  var resultsContainer = document.querySelector("#results-container");
+  resultsContainer.classList.remove("hidden");
+  resultsContainer.classList.add("visible");
+  resultsDiv.textContent = "";
+  var location = stateInput.value;
+  fetchLocation(location);
+  saveInput();
+  console.log(location);
 });
-
 
 //Mapbox events
 mapboxgl.accessToken =
@@ -56,12 +52,12 @@ var map = new mapboxgl.Map({
   zoom: 2.75, // starting zoom
 });
 
-window.navigator.geolocation.getCurrentPosition(function(position){
+window.navigator.geolocation.getCurrentPosition(function (position) {
   map.flyTo({
     center: [position.coords.longitude, position.coords.latitude],
-    zoom:11,
-  })
-})
+    zoom: 11,
+  });
+});
 
 //map popups
 var marker = new mapboxgl.Marker().setLngLat([-0.2, 51.5]).addTo(map);
@@ -76,12 +72,12 @@ map.on("click", function (e) {
 
   var feature = features[0];
 
-var aptAvailability; 
-if (feature.properties.appointments_available === true) {
-  aptAvailability = "🟢 Available" 
-} else {
-  aptAvailability = "🔴 Unavailable";
-}
+  var aptAvailability;
+  if (feature.properties.appointments_available === true) {
+    aptAvailability = "🟢 Available";
+  } else {
+    aptAvailability = "🔴 Unavailable";
+  }
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
@@ -89,19 +85,24 @@ if (feature.properties.appointments_available === true) {
       "<h5>" +
         feature.properties.name +
         "</h5><p>" +
-        feature.properties.address + ', ' + feature.properties.city + ', ' + feature.properties.state + ' ' + feature.properties.postal_code +
+        feature.properties.address +
+        ", " +
+        feature.properties.city +
+        ", " +
+        feature.properties.state +
+        " " +
+        feature.properties.postal_code +
         "</p>" +
-        "<p><b>Appointments:</b>"+
-        ' ' + aptAvailability +
+        "<p><b>Appointments:</b>" +
+        " " +
+        aptAvailability +
         "</p>"
-
     )
     .addTo(map);
 });
 
 //Collecting List display data
 function fetchLocation(location) {
-  // console.log(location);
   var locatorApi = `https://www.vaccinespotter.org/api/v0/states/${location}.json`;
   fetch(locatorApi)
     .then(function (data) {
@@ -116,20 +117,22 @@ function fetchLocation(location) {
         );
         option.appendChild(zipCode);
         zipInput.appendChild(option);
-        // console.log(zipCode);
       }
-      var isValidZip = data.features.some(location => location.properties.postal_code === zipInput.value)
-      // console.log(isValidZip);
+
+      var isValidZip = data.features.some(
+        (location) => location.properties.postal_code === zipInput.value
+      );
       if (!isValidZip) {
         var noLocation = document.createElement("h6");
-          noLocation.setAttribute("class", "no-location");
-          noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
-          resultsDiv.appendChild(noLocation);
-          return;
+        noLocation.setAttribute("class", "no-location");
+        noLocation.textContent =
+          "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!";
+        resultsDiv.appendChild(noLocation);
+        return;
       }
       // for info on locations by state/zip search
       for (var i = 0; i < data.features.length; i++) {
-       if (zipInput.value === data.features[i].properties.postal_code) {
+        if (zipInput.value === data.features[i].properties.postal_code) {
           // name of location
           var placeName = document.createElement("h5");
           placeName.setAttribute("class", "location-name");
@@ -139,7 +142,7 @@ function fetchLocation(location) {
           var placeUrl = document.createElement("a");
           var urlDataLocation = data.features[i].properties.url;
           placeUrl.setAttribute("href", urlDataLocation);
-          placeUrl.setAttribute("target", "_blank")
+          placeUrl.setAttribute("target", "_blank");
           placeUrl.appendChild(nameDataLocation);
           placeName.appendChild(placeUrl);
 
@@ -155,7 +158,11 @@ function fetchLocation(location) {
           var placeCity = document.createElement("h6");
           placeCity.setAttribute("class", "location-city");
           var cityDataLocation = document.createTextNode(
-            data.features[i].properties.city + ', ' + data.features[i].properties.state + ' ' + data.features[i].properties.postal_code
+            data.features[i].properties.city +
+              ", " +
+              data.features[i].properties.state +
+              " " +
+              data.features[i].properties.postal_code
           );
           placeCity.appendChild(cityDataLocation);
 
@@ -171,8 +178,7 @@ function fetchLocation(location) {
           var moderna =
             data.features[i].properties.appointment_vaccine_types.moderna;
           var jj = data.features[i].properties.appointment_vaccine_types.jj;
-          // change text to dynamic button type text?
-          // if unavailable, wrap text in red box, if availble, wrap in green box instead of long sentence abt unavailability
+
           if (pfizer === true) {
             placeVacType.innerHTML = "<b>Vaccine types available:</b> Pfizer";
           } else if (pfizer && moderna === true) {
@@ -222,22 +228,10 @@ function fetchLocation(location) {
           resultsDiv.appendChild(placeName);
           resultsDiv.appendChild(placeAddress);
           resultsDiv.appendChild(placeCity);
-          // resultsDiv.appendChild(placeState);
-          // resultsDiv.appendChild(placeZip);
           resultsDiv.appendChild(placeAptAvail);
           resultsDiv.appendChild(placeSecondDoseOnly);
           resultsDiv.appendChild(placeVacType);
-
-          // console.log(placeName);
-        // } else {
-        //   var noLocation = document.createElement("h6");
-        //   noLocation.setAttribute("class", "no-location");
-        //   // noLocation.textContent = "Sorry, we don't have information for your exact location quite yet. We're working on it so check back soon!"
-        //   resultsDiv.appendChild(noLocation);
-        //   // break;
-        //   ;
-        // }
+        }
       }
-    }
     });
 }
