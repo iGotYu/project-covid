@@ -15,3 +15,8 @@ At the footer of the page we have provided additional links for the user to refe
 Over the course of this week we were able to create a functional application with small instances of issues here and there. At first we were planning on using GoogleMaps but upon obtaining the API key we found out that GoogleMaps did not have a free API. We then went onto finding Map Box which we found more success in and through their resources we were able to upload our vaccine API information. This is how we were able to provide a visual display for our users on our map. We used the same information on the vaccine API to provide the information on our list that is created based on the state and zip code provided. One issue we came in contact with was that some states, due to the formatting and or corruption of certain states JSON files, were illegible to and unable to get uploaded onto the map. So unfortunately due to this error we are missing the vaccine location information portion on our map for Maryland, Massachusetts, Missouri, New Jersey, and Pennsylvania. However in the event that the user lives in any of those states they can still get a list of information for their local vaccines. Throughout the creation of this application we were able to use many of the skills we were taught since the first week of class. From implementing different HTML, CSS, and JavaScript skills and using third parties to assist in the styling and layouts of the page. We were able to utilize almost all the taught skills and resources to complete our application.
 
 Link to site: [Covid-19 Vaccine Finder](https://igotyu.github.io/project-covid/).
+
+![landing-screen]()
+![map-footer]()
+![state-slector]()
+![results]()
